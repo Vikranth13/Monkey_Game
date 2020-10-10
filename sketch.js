@@ -8,7 +8,7 @@ var PLAY = 1;
 var END = 0;
 var gameState = PLAY
 
-var score;
+var score, scoreb;
 function preload(){
   monkey_running = loadAnimation("Monkey_01.png", "Monkey_02.png", "Monkey_03.png", "Monkey_04.png", "Monkey_05.png", "Monkey_06.png", "Monkey_07.png", "Monkey_08.png", "Monkey_09.png", "Monkey_10.png");
   monkeyImg = loadImage("Monkey_01.png");
@@ -32,6 +32,7 @@ function setup() {
   bananaGroup = new Group();
   
   score = 0;
+  scoreb = 0;
 }
 
 function draw() {
@@ -40,8 +41,10 @@ function draw() {
   drawSprites();
   textSize(24);
   fill("red");
-  text("Survival Time: " + score, 150,50);
-  
+  text("Survival Time: " + score, 200,50);
+  textSize(24);
+  fill("red");
+  text("Bananas: " + scoreb, 20,50);
   
     
   edges = createEdgeSprites();
@@ -73,6 +76,7 @@ function draw() {
     {
       bananaGroup.destroyEach();
       monkey.scale += 0.005
+      scoreb += 1;
     }
     if(rockGroup.isTouching(monkey))
     {
